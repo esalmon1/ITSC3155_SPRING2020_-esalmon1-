@@ -44,6 +44,11 @@ def multiple_words(s):
 # Note: URLs will be in the format http://www.example.com. There will not be anything after the TLD
 # Hint: the URL should start with https and end with one of the TLDs
 def reserved_us_tld(s):
-  # YOUR CODE HERE
+
+    match=re.search("^https.*(.gov|.edu|.mil)$",s)
+    if(match==None):
+        return False
+    else:
+        return True
   
-  return
+
