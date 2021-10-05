@@ -11,18 +11,52 @@
 # to n (including n).
 
 def count_threes(n):
-  # YOUR CODE HERE
-
-  return
-
+        n = list(str(n))
+        umap ={}
+        umap[3] = umap[6] = umap[9] = 0
+        for i in n:
+                j = int(i)
+                if j%3 == 0 and j!=0:
+                        umap[j] = umap[j] + 1
+        maximum = -1
+        index = -1
+        for k,v in umap.items():
+                if v > maximum :
+                        maximum = v
+                        index = k
+        return index
 
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
 # a string s and returns the character that has the longest consecutive repeat.
 def longest_consecutive_repeating_char(s):
-  # YOUR CODE HERE
+        s = list(s)
+        l = len(s)
+        cnt = 1
+        umap ={}
 
-  return
+        for i in range(0,l-1):
+                if(s[i] != s[i+1]):
+                      if((s[i] in umap) and umap[s[i]] > cnt ):
+                             continue
+                      else:
+                             umap[s[i]] = cnt
+                             cnt = 1
+                else:
+                      cnt = cnt + 1
+
+        umap[s[l-1]] = cnt
+
+        maximum = -1
+        for k,v in umap.items():
+                if v > maximum :
+                        maximum = v
+
+        lst = []
+        for k,v in umap.items():
+                if v == maximum :
+                        lst.append(k)
+        return lst
 
 
 # Part C. is_palindrome
@@ -32,6 +66,19 @@ def longest_consecutive_repeating_char(s):
 # forwards. Treat capital letters the same as lowercase ones
 # and ignore spaces (i.e. case insensitive).
 def is_palindrome(s):
-  # YOUR CODE HERE
+    i = 0
+    j = len(s)-1
+    while i <= j:
+        if s[i] == ' ':
+            i += 1
+            continue
 
-  return
+        if s[j] == ' ':
+            j -= 1
+            continue
+        if s[i].lower() != s[j].lower():
+            return False
+        i += 1
+        j -= 1
+    return True
+
