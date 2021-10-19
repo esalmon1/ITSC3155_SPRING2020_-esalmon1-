@@ -1,4 +1,11 @@
 venv/
 .vscode*
 .idea/
-__pycache__
+__pycache__.DS_Store
+.swp
+PythonBasics1.zip
+PythonBasics1/.DS_Store
+PythonBasics1/__pycache__/
+PythonBasics2.zip
+PythonBasics2/PythonBasics2.zip
+PythonBasics3.zip
