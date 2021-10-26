@@ -26,6 +26,7 @@ def get_notes():
 def get_note(note_id):
         a_user = {'name': 'Ted', 'email': 'esalmon1@uncc.edu'}
         return render_template('note.html', note=notes[int(note_id)], user=a_user)
+
 @app.route('/notes/new', methods=['GET', 'POST'])
 def new_note():
     a_user = {'name': 'Mogil', 'email': 'mogil@uncc.edu'}
@@ -33,10 +34,12 @@ def new_note():
     #check method used for request
     print('request method is', request.method)
     if request.method == 'POST':
-        return '<h1> Post method used for this request </h1>'
+        request_data = request.form
+
+        return f"data: {request_data} !"
     else:
         return render_template('new.html', user=a_user)
-    
+
 
     return render_template('new.html', user=a_user)
 
