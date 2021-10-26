@@ -4,6 +4,7 @@ import os                # os is used to get environment variables IP & PORT
 from flask import Flask   # Flask is the web app that we will customize
 from flask import render_template
 from flask import request
+from flask import redirect, url_for
 app = Flask(__name__)     # create an app
 notes = {1: {'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'},
             2: {'title': 'Second note', 'text': 'This is my second note', 'date': '10-2-2020'},
@@ -29,18 +30,30 @@ def get_note(note_id):
 
 @app.route('/notes/new', methods=['GET', 'POST'])
 def new_note():
+    #mock user
     a_user = {'name': 'Mogil', 'email': 'mogil@uncc.edu'}
 
     #check method used for request
-    print('request method is', request.method)
     if request.method == 'POST':
-        request_data = request.form
+        #get title data
+        title = request.form['title']
+        #get note data
+        text = request.form['noteText']
+        # create data stamp
+        from datetime import date
+        today = date.today()
+        # format mm/dd/yyyy
+        today = today.strftime("%m-%d-%Y")
+        # get the last ID used and increment by 1
+        id = len(notes) + 1
+        #create new note entry
+        notes[id] = {'title': title, 'text': text, 'date': today}
 
-        return f"data: {request_data} !"
+
+        return redirect(url_for('get_notes', name = a_user))
+
     else:
         return render_template('new.html', user=a_user)
 
-
-    return render_template('new.html', user=a_user)
 
 
