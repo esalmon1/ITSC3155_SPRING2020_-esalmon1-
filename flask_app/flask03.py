@@ -5,7 +5,8 @@ from flask import Flask   # Flask is the web app that we will customize
 from flask import render_template
 app = Flask(__name__)     # create an app
 notes = {1: {'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'},
-            2: {'title': 'Second note', 'text': 'This is my second note', 'date': '10-2-2020'}
+            2: {'title': 'Second note', 'text': 'This is my second note', 'date': '10-2-2020'},
+            3: {'title': 'Third note', 'text': 'This is my third note', 'date': '10-3-2020'}
              }
 # @app.route is a decorator. It gives the function "index" special powers.
 # In this case it makes it so anyone going to "your-url/" makes this function
@@ -13,17 +14,17 @@ notes = {1: {'title': 'First note', 'text': 'This is my first note', 'date': '10
 @app.route('/index')
 def index():
     a_user = {'name': 'Ted', 'email': 'esalmon1@uncc.edu'}
-    return render_template('index.html', user= a_user)
+    return render_template('index.html', user=a_user)
 
 @app.route('/notes')
 def get_notes():
     a_user = {'name': 'Ted', 'email': 'esalmon1@uncc.edu'}
-    return render_template('new.html', user=a_user)
+    return render_template('notes.html', notes=notes, user=a_user)
 
-@app.route('/notes/<notes_id>')
+@app.route('/notes/<note_id>')
 def get_note(note_id):
         a_user = {'name': 'Ted', 'email': 'esalmon1@uncc.edu'}
-        return render_template('new.html', note=notes[int(note_id)], user=a_user)
+        return render_template('note.html', note=notes[int(note_id)], user=a_user)
 
 
 
