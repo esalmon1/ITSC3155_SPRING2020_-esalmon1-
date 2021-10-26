@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<nav>
+  <a href="/html/">HTML</a> |
+  <a href="/css/">CSS</a> |
+  <a href="/js/">JavaScript</a> |
+  <a href="/python/">Python</a>
+</nav>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,11 +15,14 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
     <body>
-
+	<nav>
+                <a href="{{ url_for('index') }}"> Home</a> ||
+                <a href="{{ url_for('get_notes') }}"> My notes</a>
+        </nav>
         <h1>Welcome {{user.name}} to the 49er Notes App!</h1>
 
         <h2>Use this site to maintain and organize your notes.</h2>
-
+    
         <h3>Course notes</h3>
 
         <h3>To Do</h3>
