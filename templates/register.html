@@ -10,11 +10,20 @@
         <div class="navdiv">
 
             <nav>
-                <a href="{{ url_for('index') }}"> Home</a> ||
-                <a href="{{ url_for('get_notes') }}"> My Notes</a> ||
-                <a href="{{ url_for('new_note') }}">Add Note</a>
+                <a href="{{url_for('index')}}">Home</a> ||
+                <a href="{{url_for('get_notes')}}">My Notes</a> ||
+                <a href="{{url_for('new_note')}}">Add Note</a> ||
             </nav>
+            {% if user %}
+                <nav>
+                    <a href="{{url_for('logout')}}">Logout</a>
 
+            {% else %}
+                <nav>
+                    <a href="{{url_for('login')}}">Login</a> ||
+                    <a href="{{url_for('register')}}">Register</a>
+                </nav>
+            {% endif %}
         </div>
         <h1>Welcome {% if user %}{{user}}{% endif %}to the 49er Notes App!</h1>
 
