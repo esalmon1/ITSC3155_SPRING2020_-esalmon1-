@@ -9,7 +9,7 @@ from database import db
 class RegisterForm(FlaskForm):
     class Meta:
         csrf = False
-
+# v
     firstname = StringField('First Name', validators=[Length(1, 10)])
 
     lastname = StringField('Last Name', validators=[Length(1, 20)])

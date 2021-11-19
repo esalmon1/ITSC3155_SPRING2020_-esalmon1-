@@ -143,7 +143,7 @@ def update_note(note_id):
 def new_note():
     # check if a user is saved in sessing
     if session.get('user'):
-    # check method used for request
+    # check method used for reques
         if request.method == 'POST':
             # get title data
             title = request.form['title']
