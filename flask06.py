@@ -171,7 +171,7 @@ def get_note(note_id):
         my_notes = db.session.query(Note).filter_by(id=note_id).one()
 
         form = CommentForm()
-        return render_template('note.html', note=my_notes, user = session['user'], form = form)
+        return render_template('note.html', note=my_notes, user = session['user'], form=form)
     else:
         return redirect(url_for('login'))
 @app.route('/notes')
