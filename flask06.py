@@ -132,7 +132,7 @@ def update_note(note_id):
             return redirect(url_for('get_notes'))
         else:
                 # GET request - show new note form to edit note
-                # retreieve user from database
+                # retreieve user from databasee
                 #retrieve note from databasee
                 my_note = db.session.query(Note).filter_by(id=note_id).one()
 
